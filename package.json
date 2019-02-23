@@ -1,0 +1,30 @@
+{
+  "name": "taskapi",
+  "version": "1.0.0",
+  "description": "this utility helps create task and task management",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js",
+    "start:server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaghelmt/TaskAPI.git"
+  },
+  "keywords": [
+    "task"
+  ],
+  "author": "Mitul Vaghela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaghelmt/TaskAPI/issues"
+  },
+  "homepage": "https://github.com/vaghelmt/TaskAPI#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.15",
+    "nodemon": "^1.18.10"
+  }
+}
