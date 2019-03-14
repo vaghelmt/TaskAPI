@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const Task = require('./models/task');
 const mongoose = require('mongoose');
 const moment = require('moment');
+const _ = require('lodash');
 
 //connect to mongoDB
 mongoose.connect("mongodb://127.0.0.1:27017/task-api?gssapiServiceName=mongodb")
@@ -84,6 +85,29 @@ app.post('/api/tasks/:id',(req,res,next)=>{
         }
         
     });
+});
+
+
+//add a subtask
+app.post('/api/update/subtask/:id',(req,res,next)=>{
+    let updatedSubTask;
+    console.log(req.body);
+    Task.findById(req.params.id,function(err,task){
+        //req.body.subTask.push(task.subTask);
+        updatedSubTask = task.subTask;
+        updatedSubTask.push(req.body.subTask);
+        req.body.subTask = _.flattenDeep(updatedSubTask);
+        //console.log( req.body.subTask);
+        //console.log(req.body);
+        Task.updateOne({_id:req.params.id},req.body,function(err){
+            if(!err){
+                res.status(204).send();
+            }else{
+                res.status(400).send(err);
+            }
+        });
+    })
+
 });
 
 module.exports = app;
