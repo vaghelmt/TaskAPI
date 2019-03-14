@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const taskSchema = mongoose.Schema({
     title: {type: String, required: true},
-    dueDate: String,
-    reminder: String,
-    subTask: String,
+    dueDate: Date,
+    reminderDate: Date,
+    subTask: Array,
     note: String,
     file: String
 });
